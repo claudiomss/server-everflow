@@ -69,7 +69,7 @@ app.post("/salvar-ic", cors(), async (req, res) => {
     // ),
   ])
 
-  res.status(200).send("Sucesso")
+  // res.status(200).send("Sucesso")
 })
 
 // async function sendPurchaseEvent(data, dataDB) {
@@ -330,3 +330,8 @@ app.post("/salvar-ic", cors(), async (req, res) => {
 https.createServer(options, app).listen(443, () => {
   console.log("Server is running on https://servertt.online")
 })
+
+// const PORT = 3000
+// app.listen(PORT, () => {
+//   console.log(`Servidor rodando em http://localhost:${PORT}`)
+// })
