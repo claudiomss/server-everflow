@@ -34,31 +34,6 @@ app.get("/", cors(), async (req, res) => {
   res.status(200).send("Rodando")
 })
 
-// Funções auxiliares para extrair partes dos parâmetros
-function extractCampaignName(campaign) {
-  return campaign.split("|")[0]
-}
-
-function extractCampaignId(campaign) {
-  return campaign.split("|")[1]
-}
-
-function extractAdsetName(medium) {
-  return medium.split("|")[0]
-}
-
-function extractAdsetId(medium) {
-  return medium.split("|")[1]
-}
-
-function extractAdName(content) {
-  return content.split("|")[0]
-}
-
-function extractAdId(cmcAdid) {
-  return cmcAdid ? cmcAdid.replace(/^\[|\]$/g, "") : "" // Ajuste conforme necessário
-}
-
 function getPixel(pixelName) {
   const accessToken_CLD =
     "EAAL1DetdEEUBO6FW7FFAa7uESZCaC1QBdok77gT5BGWBYwORbZBD44MGatJaG8YMRURF7ZCA6Ehj9Eh0FhLDgoudB0ozp4u5iAuk5VmotabYF4JHB1Lkwsf5yQV5huWWXPqL0ZCKkIKYbjpASXxRbNMiIP9fsUNuWUZBKGEZAUVJufNuZBpDqorLp7lZBlxJOEtjPgZDZD"
@@ -96,6 +71,31 @@ app.post("/InitiateCheckout", cors(), async (req, res) => {
   const utmMedium = urlParams.get("utm_medium")
   const utmContent = urlParams.get("utm_content")
   const cmcAdid = urlParams.get("xcod") // Utilizando 'xcod' para obter o 'cmc_adid'
+
+  // Funções auxiliares para extrair partes dos parâmetros
+  function extractCampaignName(campaign) {
+    return campaign.split("|")[0]
+  }
+
+  function extractCampaignId(campaign) {
+    return campaign.split("|")[1]
+  }
+
+  function extractAdsetName(medium) {
+    return medium.split("|")[0]
+  }
+
+  function extractAdsetId(medium) {
+    return medium.split("|")[1]
+  }
+
+  function extractAdName(content) {
+    return content.split("|")[0]
+  }
+
+  function extractAdId(cmcAdid) {
+    return cmcAdid ? cmcAdid.replace(/^\[|\]$/g, "") : "" // Ajuste conforme necessário
+  }
 
   const data = {
     client_ip_address:
