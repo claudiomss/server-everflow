@@ -151,7 +151,7 @@ app.post("/InitiateCheckout", cors(), async (req, res) => {
     access_token: accessToken,
   }
 
-  await Promise.allSettled([
+  const save = await Promise.allSettled([
     supabase.from("InitiateCheckout").insert({
       fbc: _fbc,
       fbp: _fbp,
@@ -168,6 +168,8 @@ app.post("/InitiateCheckout", cors(), async (req, res) => {
     //   "https://api.pushcut.io/EOJzw385r_u6-957qImuI/notifications/MinhaNotifica%C3%A7%C3%A3o"
     // ),
   ])
+
+  console.log(save)
 
   try {
     const response2 = await axios.post(urlFace, eventData)
